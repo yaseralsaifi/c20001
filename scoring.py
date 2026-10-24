@@ -97,12 +97,12 @@ def score_risk(amount, avg_payment, cfg_risk: dict) -> int:
     ratio = a / b
     if ratio <= cfg_risk["r_5"]: return 5
     elif ratio <= cfg_risk["r_4"]: return 4
-    elif ratio <= cfg_risk["r_3"]: return 2
-    elif ratio <= cfg_risk["r_2"]: return 1
-    elif ratio <= cfg_risk["r_1"]: return 0
+    elif ratio <= cfg_risk["r_3"]: return 3
+    elif ratio <= cfg_risk["r_2"]: return 2
+    elif ratio <= cfg_risk["r_1"]: return 1
     elif ratio <= 4.0: return 0
     elif ratio <= 6.0: return -5
-    elif ratio <= 12.0: return -10
+    elif ratio > 6.0: return -10
     else: return 0
 
 def final_classification(score, cfg_final: dict) -> str:
